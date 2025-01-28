@@ -1,15 +1,15 @@
-import { Text, View } from "react-native";
+import { Text, View, SafeAreaView } from "react-native";
 
 export default function Index() {
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      <Text>début de LD</Text>
+    </SafeAreaView>
   );
 }
