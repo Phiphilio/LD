@@ -1,4 +1,8 @@
-- **Projet :** App de recettes avec navigation.
+# Projet
+
+App de recettes avec navigation.
+Pour apporter un peu d'humanité, j'ai décidé de faire des recettes de cocktail
+
 - **Notions principales :**
   - Mise en place de la navigation avec `expo-router` ou `react-navigation`.
   - Gestion de l’état global ou partiel (context API ou librairie légère).
@@ -87,3 +91,9 @@ Une application avec les fonctionnalités suivantes :
 2. Une liste dynamique de recettes affichée avec `FlatList`.
 3. Une gestion partielle ou globale des données (recettes et favoris).
 4. Une interface propre et fonctionnelle, avec un typage clair pour la navigation et les données.
+
+## ressources
+
+- [lien vers l'API thecocktaildb.com](https://www.thecocktaildb.com/api.php)
+
+- [site pour visualiser les couleurs](https://www.colorhexa.com/)
