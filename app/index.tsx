@@ -3,7 +3,7 @@ import { SearchBar } from "@/components/searchBar";
 import { colors } from "@/constants/color";
 import { useFetchData } from "@/hooks/useFecthData";
 import { useEffect } from "react";
-import { Text, View, SafeAreaView, StyleSheet } from "react-native";
+import { Text, View, SafeAreaView, StyleSheet, FlatList } from "react-native";
 
 export default function Index() {
   const backgroundColor = colors.background.purple;
@@ -23,10 +23,18 @@ export default function Index() {
         <SearchBar />
       </View>
       <View style={styles.cardContainer}>
-        <CocktailCard
-          name={drinkList[0]?.strDrink ?? ""}
-          alcoholic={drinkList[0]?.strAlcoholic ?? ""}
-          image={drinkList[0]?.strDrinkThumb ?? ""}
+        <FlatList
+          data={drinkList}
+          renderItem={({ item }) => (
+            <CocktailCard
+              name={item?.strDrink ?? ""}
+              alcoholic={item?.strAlcoholic ?? ""}
+              image={item?.strDrinkThumb ?? ""}
+            />
+          )}
+          keyExtractor={(item) => item.idDrink}
+          contentContainerStyle={{ gap: 8 }}
+          horizontal={true}
         />
       </View>
     </SafeAreaView>
@@ -44,7 +52,9 @@ const styles = StyleSheet.create({
     paddingBottom: 35,
   },
   cardContainer: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    //backgroundColor: "white",
   },
 });
