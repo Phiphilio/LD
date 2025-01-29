@@ -2,6 +2,7 @@ import { CocktailCard } from "@/components/cocktailCard";
 import { SearchBar } from "@/components/searchBar";
 import { colors } from "@/constants/color";
 import { useFetchData } from "@/hooks/useFecthData";
+import { BlurView } from "expo-blur";
 import { useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet, FlatList } from "react-native";
 
@@ -19,9 +20,10 @@ export default function Index() {
     <SafeAreaView
       style={[styles.container, { backgroundColor: backgroundColor }]}
     >
-      <View style={styles.header}>
+      <BlurView intensity={1} tint="dark" style={styles.header}>
         <SearchBar />
-      </View>
+      </BlurView>
+
       <View style={styles.cardContainer}>
         <FlatList
           data={drinkList}
@@ -33,8 +35,8 @@ export default function Index() {
             />
           )}
           keyExtractor={(item) => item.idDrink}
-          contentContainerStyle={{ gap: 8 }}
-          horizontal={true}
+          contentContainerStyle={{ gap: 120, marginTop: 150 }}
+          horizontal={false}
         />
       </View>
     </SafeAreaView>
@@ -50,6 +52,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingTop: 35,
     paddingBottom: 35,
+    position: "absolute",
+    zIndex: 3,
+    left: 0,
+    right: 0,
+    //width: 450,
+    backgroundColor: "rgba(106, 13, 173, 0.3) ",
   },
   cardContainer: {
     flex: 1,
