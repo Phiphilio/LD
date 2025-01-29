@@ -17,7 +17,7 @@ export default function RootLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="index" // nom du fichier qui doit servir d'écran
         options={{
           title: "Recettes",
           tabBarIcon: ({ color }) => (
