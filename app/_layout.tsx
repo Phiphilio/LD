@@ -34,6 +34,8 @@ export default function RootLayout() {
           ),
         }}
       />
+
+      <Tabs.Screen name="cocktail" options={{ href: null }} />
     </Tabs>
   );
 }
