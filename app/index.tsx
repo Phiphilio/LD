@@ -12,8 +12,6 @@ export default function Index() {
     "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=p"
   );
 
-  console.log("Données reçues :", data);
-
   const drinkList = data ?? []; // Si `data` est null, on retourne un tableau vide
 
   return (
