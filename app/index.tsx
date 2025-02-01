@@ -35,6 +35,7 @@ export default function Index() {
           keyExtractor={(item) => item.idDrink}
           contentContainerStyle={{ gap: 120, marginTop: 150 }}
           horizontal={false}
+          ListFooterComponent={<View style={{ height: 150 }} />}
         />
       </View>
     </SafeAreaView>
