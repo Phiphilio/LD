@@ -1,4 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { colors } from "@/constants/color";
+import { useRouter } from "expo-router";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 type props = {
   name: string;
@@ -7,14 +9,31 @@ type props = {
 };
 
 export function CocktailCard({ name, alcoholic, image }: props) {
+  const colory = colors.Card;
+  const router = useRouter();
+
+  const lienDynamique = () => {
+    router.push({
+      pathname: "/cocktail/[name]",
+      params: { name: name },
+    });
+  };
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: image }} style={styles.image} />
-      <View style={styles.textSection}>
-        <Text style={{ color: "#1E1E1E" }}>{name}</Text>
-        <Text>{alcoholic === "Alcoholic" ? "alcoolisé" : "sans alcool"}</Text>
+    <Pressable
+      android_ripple={{
+        foreground: true,
+        color: colory.lightPurple,
+      }}
+      onPress={lienDynamique}
+    >
+      <View style={styles.card}>
+        <Image source={{ uri: image }} style={styles.image} />
+        <View style={styles.textSection}>
+          <Text style={{ color: "#1E1E1E" }}>{name}</Text>
+          <Text>{alcoholic === "Alcoholic" ? "alcoolisé" : "sans alcool"}</Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
