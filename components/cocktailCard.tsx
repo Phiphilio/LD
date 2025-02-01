@@ -1,6 +1,7 @@
 import { colors } from "@/constants/color";
 import { useRouter } from "expo-router";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { ThemedText } from "./ThemedText";
 
 type props = {
   name: string;
@@ -29,8 +30,10 @@ export function CocktailCard({ name, alcoholic, image }: props) {
       <View style={styles.card}>
         <Image source={{ uri: image }} style={styles.image} />
         <View style={styles.textSection}>
-          <Text style={{ color: "#1E1E1E" }}>{name}</Text>
-          <Text>{alcoholic === "Alcoholic" ? "alcoolisé" : "sans alcool"}</Text>
+          <ThemedText variant="title">{name}</ThemedText>
+          <ThemedText>
+            {alcoholic === "Alcoholic" ? "alcoolisé" : "sans alcool"}
+          </ThemedText>
         </View>
       </View>
     </Pressable>

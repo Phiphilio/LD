@@ -1,5 +1,6 @@
 import { useFonts } from "expo-font";
 import { StyleSheet, Text, View } from "react-native";
+import { ThemedText } from "./ThemedText";
 type props = {
   name: string;
   alcohol: string;
@@ -14,11 +15,11 @@ export function CardContent({ name, alcohol }: props) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{name}</Text>
-      <Text style={styles.description}>
+      <ThemedText variant="title">{name}</ThemedText>
+      <ThemedText variant="description">
         {alcohol === "Alcoholic" ? "alcoolisée" : "non alcoolisé"}
-      </Text>
-      <Text style={styles.title}>Ingrédients</Text>
+      </ThemedText>
+      <ThemedText variant="subtitle">Ingrédients</ThemedText>
     </View>
   );
 }
