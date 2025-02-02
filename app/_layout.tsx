@@ -4,8 +4,8 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { colors } from "@/constants/color";
 
 export default function RootLayout() {
-  const colorIcone = colors.background.purple;
-  const colorInactiveIcon = colors.Card.lightPurple;
+  const colorInactiveIcon = colors.background.purple;
+  const colorIcone = colors.Card.lightPurple;
   const colorBackgroundTabBar = colors.background.gray;
   return (
     <Tabs
