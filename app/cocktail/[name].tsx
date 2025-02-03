@@ -4,20 +4,33 @@ import { useFetchData } from "@/hooks/useFecthData";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { colors } from "@/constants/color";
 import { CardContent } from "@/components/cardContent";
+import { recetteFav, recetteStructure } from "@/constants/favorisContext";
+import { useContext } from "react";
 
 export default function Cocktail() {
   const { name } = useLocalSearchParams();
-  const colory = colors.Card;
   const router = useRouter();
   const Retour = () => {
     router.back();
   };
+
+  const colory = colors.Card;
 
   const { data, loading, error } = useFetchData(
     `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`
   );
   const dataCocktail = data ?? [];
 
+  const recetteData: recetteStructure = {
+    name: dataCocktail[0]?.strDrink ?? "",
+    alcohol: dataCocktail[0]?.strAlcoholic ?? "",
+    urlImage: dataCocktail[0]?.strDrinkThumb ?? "",
+    id: dataCocktail[0]?.idDrink ?? "",
+  };
+
+  const recetteFavTab = useContext(recetteFav);
+  recetteFavTab.push(recetteData);
+  console.log("le test");
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
