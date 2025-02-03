@@ -1,15 +1,22 @@
 import { colors } from "@/constants/color";
 import { useRouter } from "expo-router";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  ViewProps,
+} from "react-native";
 import { ThemedText } from "./ThemedText";
 
-type props = {
+type props = ViewProps & {
   name: string;
   alcoholic: string;
   image: string;
 };
 
-export function CocktailCard({ name, alcoholic, image }: props) {
+export function CocktailCard({ name, alcoholic, image, ...rest }: props) {
   const colory = colors.Card;
   const router = useRouter();
 
@@ -27,7 +34,7 @@ export function CocktailCard({ name, alcoholic, image }: props) {
       }}
       onPress={lienDynamique}
     >
-      <View style={styles.card}>
+      <View style={styles.card} {...rest}>
         <Image source={{ uri: image }} style={styles.image} />
         <View style={styles.textSection}>
           <ThemedText variant="title">{name}</ThemedText>

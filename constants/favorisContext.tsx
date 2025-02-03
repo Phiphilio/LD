@@ -1,10 +1,10 @@
 import { createContext } from "react";
 
-type recetteStructure = {
+export type recetteStructure = {
   id: number;
   name: string;
   alcohol: string;
   urlImage: string;
 };
 
-const recetteFav = createContext<recetteStructure[]>([]);
+export const recetteFav = createContext<recetteStructure[]>([]);
