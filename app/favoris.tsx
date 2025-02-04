@@ -1,10 +1,12 @@
 import { ThemedText } from "@/components/ThemedText";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { colors } from "@/constants/color";
 import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 import Animated, { useAnimatedRef } from "react-native-reanimated";
 import type { SortableGridRenderItem } from "react-native-sortables";
 import Sortable from "react-native-sortables";
+import { recetteFavContext } from "@/constants/favorisContext";
+import { CocktailCard } from "@/components/cocktailCard";
 
 const DATA = Array.from({ length: 30 }, (_, index) => `Item ${index + 1}`);
 
@@ -14,6 +16,12 @@ export default function Favoris() {
 
   const scrollableRef = useAnimatedRef<Animated.ScrollView>();
 
+  const context = useContext(recetteFavContext);
+  if (!context) {
+    throw new Error("erreur");
+  }
+
+  const { favoris } = context;
   const renderItem = useCallback<SortableGridRenderItem<string>>(
     ({ item }) => (
       <View style={styles.card}>
@@ -22,6 +30,7 @@ export default function Favoris() {
     ),
     []
   );
+  console.log(favoris);
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: backgroundColor }]}
@@ -35,11 +44,16 @@ export default function Favoris() {
       >
         <Sortable.Grid
           columns={2}
-          data={DATA}
+          data={favoris}
           renderItem={({ item }) => (
-            <View style={styles.card}>
-              <Text style={styles.text}>{item}</Text>
-            </View>
+            <CocktailCard
+              name={item?.name ?? ""}
+              alcoholic={item?.alcohol ?? ""}
+              image={item?.urlImage ?? ""}
+              card={styles.card}
+              cardImage={styles.image}
+              cardTextSection={styles.text}
+            />
           )}
           rowGap={10}
           columnGap={10}
@@ -67,20 +81,28 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     width: 300,
   },
-  card: {
-    backgroundColor: "#36877F",
-    height: 100,
-    borderRadius: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   contentContainer: {
+    flex: 1,
     width: 350,
+    // height: 400,
     padding: 10,
     //backgroundColor: "yellow",
   },
+  card: {
+    // backgroundColor: "#36877F",
+    // height: 100,
+    borderRadius: 10,
+    width: 150,
+    height: 170,
+    backgroundColor: "white",
+  },
+  image: {
+    height: 100,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
   text: {
-    color: "white",
-    fontWeight: "bold",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
