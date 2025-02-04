@@ -4,7 +4,10 @@ import { useFetchData } from "@/hooks/useFecthData";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { colors } from "@/constants/color";
 import { CardContent } from "@/components/cardContent";
-import { recetteFav, recetteStructure } from "@/constants/favorisContext";
+import {
+  recetteFavContext,
+  recetteStructure,
+} from "@/constants/favorisContext";
 import { useContext } from "react";
 
 export default function Cocktail() {
@@ -21,6 +24,13 @@ export default function Cocktail() {
   );
   const dataCocktail = data ?? [];
 
+  const context = useContext(recetteFavContext);
+
+  if (!context) {
+    throw new Error("erreur");
+  }
+  const { favoris, addFavoris, removeFavoris } = context;
+
   const recetteData: recetteStructure = {
     name: dataCocktail[0]?.strDrink ?? "",
     alcohol: dataCocktail[0]?.strAlcoholic ?? "",
@@ -28,9 +38,15 @@ export default function Cocktail() {
     id: dataCocktail[0]?.idDrink ?? "",
   };
 
-  const recetteFavTab = useContext(recetteFav);
-  recetteFavTab.push(recetteData);
-  console.log("le test");
+  const favAdding = () => {
+    addFavoris(recetteData);
+  };
+
+  const found = favoris.find((item) => item.id === recetteData.id);
+
+  const favRemoving = () => {
+    removeFavoris(recetteData.id);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -45,9 +61,13 @@ export default function Cocktail() {
             style={styles.arrowLeft}
           />
         </Pressable>
-        <Pressable android_ripple={{ foreground: true, color: "white" }}>
+        <Pressable
+          android_ripple={{ foreground: true, color: "white" }}
+          onPress={favAdding}
+          onLongPress={favRemoving}
+        >
           <AntDesign
-            name="hearto"
+            name={!found ? "hearto" : "heart"}
             size={35}
             color={colory.lightPurple}
             style={styles.heartIcon}
