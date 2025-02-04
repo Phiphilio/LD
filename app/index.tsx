@@ -3,7 +3,6 @@ import { SearchBar } from "@/components/searchBar";
 import { colors } from "@/constants/color";
 import { useFetchData } from "@/hooks/useFecthData";
 import { BlurView } from "expo-blur";
-import { useEffect } from "react";
 import { Text, View, SafeAreaView, StyleSheet, FlatList } from "react-native";
 
 export default function Index() {
@@ -30,6 +29,9 @@ export default function Index() {
               name={item?.strDrink ?? ""}
               alcoholic={item?.strAlcoholic ?? ""}
               image={item?.strDrinkThumb ?? ""}
+              card={styles.card}
+              cardImage={styles.cardImage}
+              cardTextSection={styles.cardTextSection}
             />
           )}
           keyExtractor={(item) => item.idDrink}
@@ -63,5 +65,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     //backgroundColor: "white",
+  },
+  card: {
+    width: 300,
+    height: 300,
+    borderRadius: 20,
+    backgroundColor: "white",
+    //marginLeft: 30,
+  },
+  cardImage: {
+    width: 300,
+    height: 300,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    //borderRadius: 10,
+  },
+  cardTextSection: {
+    backgroundColor: "#E6D4F1",
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    height: 70,
   },
 });
