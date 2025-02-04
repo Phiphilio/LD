@@ -14,9 +14,20 @@ type props = ViewProps & {
   name: string;
   alcoholic: string;
   image: string;
+  card: object;
+  cardImage: object;
+  cardTextSection: object;
 };
 
-export function CocktailCard({ name, alcoholic, image, ...rest }: props) {
+export function CocktailCard({
+  name,
+  alcoholic,
+  image,
+  card,
+  cardImage,
+  cardTextSection,
+  ...rest
+}: props) {
   const colory = colors.Card;
   const router = useRouter();
 
@@ -34,9 +45,9 @@ export function CocktailCard({ name, alcoholic, image, ...rest }: props) {
       }}
       onPress={lienDynamique}
     >
-      <View style={styles.card} {...rest}>
-        <Image source={{ uri: image }} style={styles.image} />
-        <View style={styles.textSection}>
+      <View style={card} {...rest}>
+        <Image source={{ uri: image }} style={cardImage} />
+        <View style={cardTextSection}>
           <ThemedText variant="title">{name}</ThemedText>
           <ThemedText>
             {alcoholic === "Alcoholic" ? "alcoolisé" : "sans alcool"}
@@ -47,27 +58,4 @@ export function CocktailCard({ name, alcoholic, image, ...rest }: props) {
   );
 }
 
-const styles = StyleSheet.create({
-  card: {
-    width: 300,
-    height: 300,
-    borderRadius: 20,
-    backgroundColor: "white",
-    //marginLeft: 30,
-  },
-  image: {
-    width: 300,
-    height: 300,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    //borderRadius: 10,
-  },
-  textSection: {
-    backgroundColor: "#E6D4F1",
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    height: 70,
-  },
-});
+const styles = StyleSheet.create({});
