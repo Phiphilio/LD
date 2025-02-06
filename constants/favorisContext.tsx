@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { storeData, getData } from "@/function/data";
 
 type recetteStructure = {
   id: number;
@@ -17,15 +18,30 @@ export const recetteFavContext = createContext<
 >(undefined);
 
 export const RecetteFavProvider = ({ children }) => {
-  const [favoris, setfavoris] = useState<recetteStructure[]>([]);
+  const [favoris, setFavoris] = useState<recetteStructure[]>([]);
 
   const addFavoris = (value: recetteStructure) => {
-    setfavoris((prev) => [...prev, value]);
+    setFavoris((prev) => [...prev, value]);
   };
 
   const removeFavoris = (id: number) => {
-    setfavoris((prev) => prev.filter((item) => item.id != id));
+    setFavoris((prev) => prev.filter((item) => item.id != id));
   };
+
+  useEffect(() => {
+    if (favoris.length > 1) {
+      storeData(favoris);
+    }
+  }, [favoris]);
+
+  useEffect(() => {
+    const gettingData = async () => {
+      const result = await getData();
+      setFavoris(result);
+    };
+    gettingData();
+  }, []);
+
   return (
     <recetteFavContext.Provider value={{ favoris, addFavoris, removeFavoris }}>
       {children}
