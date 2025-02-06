@@ -98,8 +98,8 @@ Une application avec les fonctionnalités suivantes :
 
 - [site pour visualiser les couleurs](https://www.colorhexa.com/)
 
--[les icones](https://icons.expo.fyi/Index)
+- [les icones](https://icons.expo.fyi/Index)
 
 - [les grid sont gérer avec la librairie récente react-native-sortables](https://github.com/MatiPl01/react-native-sortables?tab=readme-ov-file)
 
--[gestion de la mémoire avec react-native-async-storge](https://react-native-async-storage.github.io/async-storage/docs/usage/)
+- [gestion de la mémoire avec react-native-async-storge](https://react-native-async-storage.github.io/async-storage/docs/usage/)
