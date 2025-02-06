@@ -30,7 +30,7 @@ export default function Favoris() {
     ),
     []
   );
-  console.log(favoris);
+
   return (
     <SafeAreaView
       style={[styles.container, { backgroundColor: backgroundColor }]}
