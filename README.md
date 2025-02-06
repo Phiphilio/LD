@@ -103,3 +103,9 @@ Une application avec les fonctionnalités suivantes :
 - [les grid sont gérer avec la librairie récente react-native-sortables](https://github.com/MatiPl01/react-native-sortables?tab=readme-ov-file)
 
 - [gestion de la mémoire avec react-native-async-storge](https://react-native-async-storage.github.io/async-storage/docs/usage/)
+
+## design qui m'ont inspiré
+
+- [Recipe App UI design](https://dribbble.com/shots/5711320-Recipe-App-UI-design)
+
+- [Healthy Food Recipe App](https://dribbble.com/shots/6472568-Healthy-Food-Recipe-App)
