@@ -21,9 +21,11 @@ export function CustomTabBar() {
         <Pressable key={index} onPress={() => router.push(tab?.route)}>
           <Text
             style={{
-              color: segments.includes(tab.route.replace("/", ""))
-                ? purple
-                : "black",
+              color:
+                (segments.length === 0 && tab.route === "/") ||
+                segments.includes(tab.route.replace("/", ""))
+                  ? purple
+                  : "black",
             }}
           >
             {tab.name}
