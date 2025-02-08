@@ -7,6 +7,7 @@ export function CustomTabBar() {
   const segments = useSegments();
 
   const purple = colors.background.purple;
+  const glassPurple = colors.background.glassPurple;
 
   const tabs = [
     { name: "breakfast", route: "/" }, // ↪ Correspond à `app/index.tsx`
@@ -15,7 +16,7 @@ export function CustomTabBar() {
   ];
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: glassPurple }]}>
       {tabs.map((tab, index) => (
         <Pressable key={index} onPress={() => router.push(tab?.route)}>
           <Text
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
-    gap: 20,
+    gap: 40,
+    padding: 10,
   },
 });
