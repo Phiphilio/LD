@@ -9,7 +9,9 @@ export default function RootLayout() {
       {/** le flex à 1 permet aux écrans de s'afficher */}
       <SearchBar />
       <CustomTabBar />
-      <Tabs screenOptions={{ tabBarStyle: { display: "none" } }}>
+      <Tabs
+        screenOptions={{ headerShown: false, tabBarStyle: { display: "none" } }}
+      >
         <Tabs.Screen
           name="index"
           options={{
