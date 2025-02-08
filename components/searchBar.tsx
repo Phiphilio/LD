@@ -16,17 +16,17 @@ export function SearchBar({ text, func, ...rest }: props) {
         style={[styles.searchBar, { backgroundColor: backgroundColor }]}
         {...rest}
       >
-        <TextInput
-          style={styles.textInput}
-          value={text}
-          onChangeText={func}
-          placeholder="ex : pinacolada"
-        />
         <AntDesign
           name="search1"
           size={24}
           color={colorIcone}
           style={styles.Icone}
+        />
+        <TextInput
+          style={styles.textInput}
+          value={text}
+          onChangeText={func}
+          placeholder="Search for recipe & channels"
         />
       </View>
     </View>
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 35,
-    paddingBottom: 35,
+    paddingBottom: 15,
     // position: "absolute",
     zIndex: 3,
     left: 0,
@@ -47,16 +47,16 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(106, 13, 173, 0.3) ",
   },
   searchBar: {
-    width: 250,
-    height: 35,
+    width: 300,
+    height: 40,
     borderRadius: 20,
     alignItems: "center",
     flexDirection: "row",
   },
   textInput: {
-    paddingLeft: 30,
+    paddingLeft: 18,
   },
   Icone: {
-    paddingLeft: 90,
+    paddingLeft: 10,
   },
 });
