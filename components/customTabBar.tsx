@@ -19,17 +19,16 @@ export function CustomTabBar() {
     <View style={[styles.container, { backgroundColor: glassPurple }]}>
       {tabs.map((tab, index) => (
         <Pressable key={index} onPress={() => router.push(tab?.route)}>
-          <Text
-            style={{
-              color:
-                (segments.length === 0 && tab.route === "/") ||
-                segments.includes(tab.route.replace("/", ""))
-                  ? purple
-                  : "black",
-            }}
+          <View
+            style={
+              (segments.length === 0 && tab.route === "/") ||
+              segments.includes(tab.route.replace("/", ""))
+                ? styles.badgeActif
+                : styles.badgeInactif
+            }
           >
-            {tab.name}
-          </Text>
+            <Text>{tab.name}</Text>
+          </View>
         </Pressable>
       ))}
     </View>
@@ -42,6 +41,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     gap: 40,
-    padding: 10,
+    padding: 0,
+  },
+  badgeActif: {
+    //flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    tintColor: "purple",
+    width: 80,
+    padding: 5,
+    borderRadius: 20,
+  },
+  badgeInactif: {
+    //  flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    width: 80,
+    padding: 5,
   },
 });
