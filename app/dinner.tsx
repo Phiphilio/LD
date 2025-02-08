@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
-export default function index() {
+export default function Dinner() {
   return (
     <View style={styles.container}>
       <Text>test</Text>

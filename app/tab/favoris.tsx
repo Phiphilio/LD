@@ -1,7 +1,7 @@
 import { ThemedText } from "@/components/ThemedText";
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { colors } from "@/constants/color";
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text, Pressable } from "react-native";
 import Animated, { useAnimatedRef } from "react-native-reanimated";
 import type { SortableGridRenderItem } from "react-native-sortables";
 import Sortable from "react-native-sortables";
@@ -24,9 +24,14 @@ export default function Favoris() {
   const { favoris } = context;
   const renderItem = useCallback<SortableGridRenderItem<string>>(
     ({ item }) => (
-      <View style={styles.card}>
-        <Text style={styles.text}>{item}</Text>
-      </View>
+      <CocktailCard
+        name={item?.name ?? ""}
+        alcoholic={item?.alcohol ?? ""}
+        image={item?.urlImage ?? ""}
+        card={styles.card}
+        cardImage={styles.image}
+        cardTextSection={styles.text}
+      />
     ),
     []
   );
@@ -35,9 +40,15 @@ export default function Favoris() {
     <SafeAreaView
       style={[styles.container, { backgroundColor: backgroundColor }]}
     >
-      <View style={[styles.header, { backgroundColor: header }]}>
-        <ThemedText variant="title"> Favoris </ThemedText>
-      </View>
+      <Pressable
+        onPress={() => {
+          scrollableRef.current?.scrollTo({ y: 1000, animated: true });
+        }}
+      >
+        <View style={[styles.header, { backgroundColor: header }]}>
+          <ThemedText variant="title"> Favoris </ThemedText>
+        </View>
+      </Pressable>
       <Animated.ScrollView
         contentContainerStyle={styles.contentContainer}
         ref={scrollableRef}
@@ -45,21 +56,12 @@ export default function Favoris() {
         <Sortable.Grid
           columns={2}
           data={favoris}
-          renderItem={({ item }) => (
-            <CocktailCard
-              name={item?.name ?? ""}
-              alcoholic={item?.alcohol ?? ""}
-              image={item?.urlImage ?? ""}
-              card={styles.card}
-              cardImage={styles.image}
-              cardTextSection={styles.text}
-            />
-          )}
+          renderItem={renderItem}
           rowGap={10}
           columnGap={10}
-          scrollableRef={scrollableRef}
           showDropIndicator={true}
           hapticsEnabled={false}
+          scrollableRef={scrollableRef}
         />
       </Animated.ScrollView>
     </SafeAreaView>
@@ -68,7 +70,7 @@ export default function Favoris() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     alignItems: "center",
   },
   header: {
@@ -83,10 +85,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    flexGrow: 1,
     width: 350,
-    // height: 400,
+    height: 1000,
     padding: 10,
-    //backgroundColor: "yellow",
+    // backgroundColor: "yellow",
   },
   card: {
     // backgroundColor: "#36877F",

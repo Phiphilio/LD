@@ -29,7 +29,7 @@ export const RecetteFavProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (favoris.length > 1) {
+    if (favoris && favoris.length > 1) {
       storeData(favoris);
     }
   }, [favoris]);
