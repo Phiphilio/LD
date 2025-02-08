@@ -5,7 +5,8 @@ import { View } from "react-native";
 
 export default function RootLayout() {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
+      {/** le flex à 1 permet aux écrans de s'afficher */}
       <SearchBar />
       <CustomTabBar />
       <Tabs screenOptions={{ tabBarStyle: { display: "none" } }}>
