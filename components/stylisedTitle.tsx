@@ -6,6 +6,7 @@ type props = ViewProps & {
   text?: string;
   color: keyof typeof colors.text;
 };
+
 export function StylisedTitle({ text, color, ...rest }: props) {
   return (
     <View style={[styles.container, { borderLeftColor: color }]} {...rest}>
@@ -18,8 +19,11 @@ export function StylisedTitle({ text, color, ...rest }: props) {
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: 180,
     borderLeftWidth: 1,
     paddingLeft: 10,
-    marginLeft: 10,
+    marginLeft: 10, // à supprimer
   },
 });
