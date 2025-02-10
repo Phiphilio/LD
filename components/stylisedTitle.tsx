@@ -13,7 +13,6 @@ export function StylisedTitle({ text, color, style, ...rest }: props) {
       style={[styles.container, { borderLeftColor: colors.text[color] }, style]}
       {...rest}
     >
-      {console.log(color)}
       <ThemedText variant="subtitle" textColor={color}>
         {text}
       </ThemedText>
