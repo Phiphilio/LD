@@ -7,9 +7,10 @@ export const colors = {
   Card: {
     lightPurple: "#E6D4F1",
     whiteVariant: "#F0F0F0",
+    white: "white",
   },
   text: {
-    white: "white",
-    back: "black",
+    whiteVariant: "#F0F0F0",
+    blackVariant: "black",
   },
 };
