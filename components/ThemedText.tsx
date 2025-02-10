@@ -16,7 +16,7 @@ export function ThemedText({ variant, textColor, ...rest }: props) {
   if (!fontsLoaded) return null;
   return (
     <Text
-      style={[styles[variant ?? "description"], { color: textColor }]}
+      style={[styles[variant ?? "text"], { color: textColor }]}
       {...rest}
     ></Text>
   );
@@ -25,14 +25,18 @@ export function ThemedText({ variant, textColor, ...rest }: props) {
 const styles = StyleSheet.create({
   title: {
     fontFamily: "PlayFairDisplayItalic",
-    fontSize: 30,
+    fontSize: 26,
   },
   subtitle: {
     fontFamily: "PlayFairDisplayItalic",
     fontSize: 20,
   },
-  description: {
+  stylisedText: {
     fontFamily: "PlayFairDisplay",
-    fontSize: 12,
+    fontSize: 15,
+  },
+  text: {
+    // fontFamily: "PlayFairDisplay",
+    fontSize: 15,
   },
 });
