@@ -1,9 +1,10 @@
+import { colors } from "@/constants/color";
 import { useFonts } from "expo-font";
 import { StyleSheet, TextProps, Text } from "react-native";
 
 type props = TextProps & {
   variant?: "title" | "subtitle" | "description";
-  textColor?: "white" | "black";
+  textColor?: keyof typeof colors.text;
 };
 
 export function ThemedText({ variant, textColor, ...rest }: props) {
