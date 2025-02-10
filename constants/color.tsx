@@ -8,4 +8,8 @@ export const colors = {
     lightPurple: "#E6D4F1",
     whiteVariant: "#F0F0F0",
   },
+  text: {
+    white: "white",
+    back: "black",
+  },
 };
