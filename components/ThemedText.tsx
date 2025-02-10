@@ -3,11 +3,11 @@ import { useFonts } from "expo-font";
 import { StyleSheet, TextProps, Text } from "react-native";
 
 type props = TextProps & {
-  variant?: "title" | "subtitle" | "stylisedText" | "text";
+  variant?: "title" | "subtitle" | "stylisedText" | "text" | "subText";
   textColor?: keyof typeof colors.text;
 };
 
-export function ThemedText({ variant, textColor, ...rest }: props) {
+export function ThemedText({ variant, textColor, style, ...rest }: props) {
   const [fontsLoaded] = useFonts({
     PlayFairDisplayItalic: require("@/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf"),
     PlayFairDisplay: require("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf"),
@@ -16,7 +16,11 @@ export function ThemedText({ variant, textColor, ...rest }: props) {
   if (!fontsLoaded) return null;
   return (
     <Text
-      style={[styles[variant ?? "text"], { color: colors.text[textColor] }]}
+      style={[
+        styles[variant ?? "text"],
+        { color: colors.text[textColor] },
+        style,
+      ]}
       {...rest}
     ></Text>
   );
@@ -38,5 +42,8 @@ const styles = StyleSheet.create({
   text: {
     // fontFamily: "PlayFairDisplay",
     fontSize: 15,
+  },
+  subText: {
+    fontSize: 10,
   },
 });

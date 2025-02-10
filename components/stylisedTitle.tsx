@@ -13,7 +13,7 @@ export function StylisedTitle({ text, color, style, ...rest }: props) {
       style={[styles.container, { borderLeftColor: colors.text[color] }, style]}
       {...rest}
     >
-      <ThemedText variant="subtitle" textColor={color}>
+      <ThemedText variant="subtitle" textColor={color} style={styles.text}>
         {text}
       </ThemedText>
     </View>
@@ -27,5 +27,8 @@ const styles = StyleSheet.create({
     width: 160,
     borderLeftWidth: 1,
     paddingLeft: 10,
+  },
+  text: {
+    padding: 0,
   },
 });
