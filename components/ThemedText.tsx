@@ -3,16 +3,22 @@ import { StyleSheet, TextProps, Text } from "react-native";
 
 type props = TextProps & {
   variant?: "title" | "subtitle" | "description";
+  textColor?: "white" | "black";
 };
 
-export function ThemedText({ variant, ...rest }: props) {
+export function ThemedText({ variant, textColor, ...rest }: props) {
   const [fontsLoaded] = useFonts({
     PlayFairDisplayItalic: require("@/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf"),
     PlayFairDisplay: require("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf"),
   });
 
   if (!fontsLoaded) return null;
-  return <Text style={styles[variant ?? "description"]} {...rest}></Text>;
+  return (
+    <Text
+      style={[styles[variant ?? "description"], { color: textColor }]}
+      {...rest}
+    ></Text>
+  );
 }
 
 const styles = StyleSheet.create({
