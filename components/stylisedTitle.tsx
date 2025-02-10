@@ -10,7 +10,7 @@ type props = ViewProps & {
 export function StylisedTitle({ text, color, ...rest }: props) {
   return (
     <View style={[styles.container, { borderLeftColor: color }]} {...rest}>
-      <ThemedText variant="title" textColor={color}>
+      <ThemedText variant="subtitle" textColor={color}>
         {text}
       </ThemedText>
     </View>
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    width: 180,
+    width: 160,
     borderLeftWidth: 1,
     paddingLeft: 10,
     marginLeft: 10, // à supprimer
