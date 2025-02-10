@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import { StyleSheet, TextProps, Text } from "react-native";
 
 type props = TextProps & {
-  variant?: "title" | "subtitle" | "description";
+  variant?: "title" | "subtitle" | "stylisedText" | "text";
   textColor?: keyof typeof colors.text;
 };
 
@@ -25,11 +25,11 @@ export function ThemedText({ variant, textColor, ...rest }: props) {
 const styles = StyleSheet.create({
   title: {
     fontFamily: "PlayFairDisplayItalic",
-    fontSize: 26,
+    fontSize: 20,
   },
   subtitle: {
     fontFamily: "PlayFairDisplayItalic",
-    fontSize: 20,
+    fontSize: 18,
   },
   stylisedText: {
     fontFamily: "PlayFairDisplay",
