@@ -16,7 +16,7 @@ export function ThemedText({ variant, textColor, ...rest }: props) {
   if (!fontsLoaded) return null;
   return (
     <Text
-      style={[styles[variant ?? "text"], { color: textColor }]}
+      style={[styles[variant ?? "text"], { color: colors.text[textColor] }]}
       {...rest}
     ></Text>
   );
