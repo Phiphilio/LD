@@ -7,9 +7,13 @@ type props = ViewProps & {
   color: keyof typeof colors.text;
 };
 
-export function StylisedTitle({ text, color, ...rest }: props) {
+export function StylisedTitle({ text, color, style, ...rest }: props) {
   return (
-    <View style={[styles.container, { borderLeftColor: color }]} {...rest}>
+    <View
+      style={[styles.container, { borderLeftColor: colors.text[color] }, style]}
+      {...rest}
+    >
+      {console.log(color)}
       <ThemedText variant="subtitle" textColor={color}>
         {text}
       </ThemedText>
@@ -24,6 +28,5 @@ const styles = StyleSheet.create({
     width: 160,
     borderLeftWidth: 1,
     paddingLeft: 10,
-    marginLeft: 10, // à supprimer
   },
 });
