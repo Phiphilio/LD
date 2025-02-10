@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(106, 13, 173, 0.3) ",
   },
   searchBar: {
-    width: 300,
+    width: 320,
     height: 40,
     borderRadius: 20,
     alignItems: "center",
