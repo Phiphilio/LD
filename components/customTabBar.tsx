@@ -1,6 +1,7 @@
 import { colors } from "@/constants/color";
 import { useRouter, useSegments } from "expo-router";
 import { View, Pressable, Text, StyleSheet } from "react-native";
+import { ThemedText } from "./ThemedText";
 
 export function CustomTabBar() {
   const router = useRouter();
@@ -10,9 +11,15 @@ export function CustomTabBar() {
   const glassPurple = colors.background.glassPurple;
 
   const tabs = [
-    { name: "breakfast", route: "/" }, // ↪ Correspond à `app/index.tsx`
-    { name: "dinner", route: "/dinner" }, // ↪ Correspond à `app/dinner.tsx`
-    { name: "cocktails", route: "/cocktails" }, // ↪ Correspond à `app/cocktails.tsx`
+    { name: <ThemedText variant="stylisedText">meal</ThemedText>, route: "/" }, // ↪ Correspond à `app/index.tsx`
+    {
+      name: <ThemedText variant="stylisedText">cocktails</ThemedText>,
+      route: "/cocktails",
+    }, // ↪ Correspond à `app/dinner.tsx`
+    {
+      name: <ThemedText variant="stylisedText">favoris</ThemedText>,
+      route: "/favoris",
+    }, // ↪ Correspond à `app/cocktails.tsx`
   ];
 
   return (
