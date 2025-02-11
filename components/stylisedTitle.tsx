@@ -28,7 +28,5 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     paddingLeft: 10,
   },
-  text: {
-    padding: 0,
-  },
+  text: {},
 });
