@@ -96,6 +96,8 @@ Une application avec les fonctionnalités suivantes :
 
 - [lien vers l'API thecocktaildb.com](https://www.thecocktaildb.com/api.php)
 
+- [lien vers l'API themealdb.com](https://www.themealdb.com/api.php)
+
 - [site pour visualiser les couleurs](https://www.colorhexa.com/)
 
 - [les icones](https://icons.expo.fyi/Index)
