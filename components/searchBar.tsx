@@ -1,6 +1,7 @@
 import { colors } from "@/constants/color";
 import { StyleSheet, TextInput, View } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useSegments } from "expo-router";
 
 type props = {
   text?: string;
@@ -8,6 +9,11 @@ type props = {
 };
 
 export function SearchBar({ text, func, ...rest }: props) {
+  const segments = useSegments();
+  const isModalOpen = segments[0] === "stack";
+
+  if (isModalOpen) return null; // Ne rien afficher
+
   const backgroundColor = colors.Card.whiteVariant;
   const colorIcone = colors.background.purple;
   return (

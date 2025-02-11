@@ -31,7 +31,7 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
-          name="tab"
+          name="stack"
           options={{
             href: null,
           }}

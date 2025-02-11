@@ -22,6 +22,10 @@ export function CustomTabBar() {
     }, // ↪ Correspond à `app/cocktails.tsx`
   ];
 
+  const isModalOpen = segments[0] === "stack";
+
+  if (isModalOpen) return null; // Ne rien afficher
+
   return (
     <View style={[styles.container, { backgroundColor: glassPurple }]}>
       {tabs.map((tab, index) => (

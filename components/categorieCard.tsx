@@ -1,6 +1,7 @@
-import { Image, StyleSheet } from "react-native";
+import { Image, Pressable, StyleSheet } from "react-native";
 import { Card } from "./card";
 import { ThemedText } from "./ThemedText";
+import { useRouter } from "expo-router";
 
 const imageMap: Record<string, any> = {
   categories: require("@/assets/images/categories.jpg"),
@@ -14,18 +15,24 @@ type props = {
 };
 
 export function CategorieCard({ text, img }: props) {
+  const router = useRouter();
+  const GO = () => {
+    router.push("/stack/favoris");
+  };
   return (
-    <Card
-      colorBackground="white"
-      cardHeight={70}
-      cardWidth={320}
-      style={styles.container}
-    >
-      <ThemedText variant="subtitle" style={styles.text}>
-        {text}
-      </ThemedText>
-      <Image source={imageMap[img]} style={styles.image} />
-    </Card>
+    <Pressable onPress={GO} android_ripple={{ foreground: true }}>
+      <Card
+        colorBackground="white"
+        cardHeight={70}
+        cardWidth={320}
+        style={styles.container}
+      >
+        <ThemedText variant="subtitle" style={styles.text}>
+          {text}
+        </ThemedText>
+        <Image source={imageMap[img]} style={styles.image} />
+      </Card>
+    </Pressable>
   );
 }
 

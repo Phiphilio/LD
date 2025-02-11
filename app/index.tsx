@@ -20,7 +20,7 @@ export default function index() {
         color="whiteVariant"
         style={styles.subtile}
       />
-      <View style={styles.test}>
+      <View style={styles.recipeSection}>
         <RecipeCard
           img={drinkList[9]?.strDrinkThumb ?? ""}
           title={drinkList[9]?.strDrink ?? ""}
@@ -52,8 +52,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 12,
   },
+  recipeSection: {
+    marginLeft: 12,
+  },
   categoriesSection: {
     alignItems: "center",
-    gap: 10,
+    gap: 15,
   },
 });
