@@ -32,8 +32,11 @@ export default function index() {
         color="whiteVariant"
         style={styles.subtile}
       />
-      <CategorieCard text="type de plat" img="categories" />
-      <CategorieCard text="countries" img="countries" />
+      <View style={styles.categoriesSection}>
+        <CategorieCard text="type de plat" img="categories" />
+        <CategorieCard text="countries" img="countries" />
+        <CategorieCard text="ingredients" img="ingredients" />
+      </View>
     </View>
   );
 }
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
   },
-  test: {
-    //marginLeft: 50,
+  categoriesSection: {
+    gap: 10,
   },
 });
