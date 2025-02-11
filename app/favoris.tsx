@@ -1,11 +1,14 @@
+import { ThemedText } from "@/components/ThemedText";
 import { colors } from "@/constants/color";
 import { View, StyleSheet, Text } from "react-native";
 
-export default function Dinner() {
+export default function Favoris() {
   const backgroundColor = colors.background.glassPurple;
   return (
     <View style={[styles.container, { backgroundColor: backgroundColor }]}>
-      <Text>test</Text>
+      <ThemedText variant="stylisedText" textColor="black">
+        title
+      </ThemedText>
     </View>
   );
 }
