@@ -50,8 +50,10 @@ const styles = StyleSheet.create({
   subtile: {
     marginTop: 10,
     marginBottom: 10,
+    marginLeft: 12,
   },
   categoriesSection: {
+    alignItems: "center",
     gap: 10,
   },
 });
