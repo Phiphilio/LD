@@ -10,7 +10,7 @@ type props = {
 
 export function SearchBar({ text, func, ...rest }: props) {
   const segments = useSegments();
-  const isModalOpen = segments[0] === "stack";
+  const isModalOpen = segments[0] === "stack"; // si on va dans le fichier stack
 
   if (isModalOpen) return null; // Ne rien afficher
 
