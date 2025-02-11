@@ -5,7 +5,7 @@ import { ThemedText } from "./ThemedText";
 const imageMap: Record<string, any> = {
   categories: require("@/assets/images/categories.jpg"),
   countries: require("@/assets/images/countries.jpg"),
-  ingredients: require("@/assets/images/ingrdients.png"),
+  ingredients: require("@/assets/images/ingredients.jpg"),
 };
 
 type props = {
