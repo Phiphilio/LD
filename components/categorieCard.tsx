@@ -17,8 +17,13 @@ type props = {
 export function CategorieCard({ text, img }: props) {
   const router = useRouter();
   const GO = () => {
-    router.push("/stack/favoris");
+    console.log(img);
+    router.push({
+      pathname: "/stack/categories/[name]",
+      params: { name: img },
+    });
   };
+
   return (
     <Pressable onPress={GO} android_ripple={{ foreground: true }}>
       <Card
