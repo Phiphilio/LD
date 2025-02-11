@@ -15,29 +15,23 @@ export default function RootLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: "breakfast",
-          }}
-        />
-        <Tabs.Screen
-          name="dinner"
-          options={{
-            title: "dinner",
+            title: "MEAL",
           }}
         />
         <Tabs.Screen
           name="cocktails"
           options={{
-            title: "cocktails",
+            title: "COCKTAILS",
+          }}
+        />
+        <Tabs.Screen
+          name="favoris"
+          options={{
+            title: "FAVORIS",
           }}
         />
         <Tabs.Screen
           name="tab"
-          options={{
-            href: null,
-          }}
-        />
-        <Tabs.Screen
-          name="cocktail"
           options={{
             href: null,
           }}
