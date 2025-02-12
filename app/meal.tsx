@@ -1,11 +1,12 @@
-import { View, StyleSheet } from "react-native";
+import { Card } from "@/components/card";
 import { CategorieCard } from "@/components/categorieCard";
 import { RecipeCard } from "@/components/recipeCard";
 import { StylisedTitle } from "@/components/stylisedTitle";
 import { colors } from "@/constants/color";
 import { useFetchData } from "@/hooks/useFecthData";
+import { StyleSheet, Text, View } from "react-native";
 
-export function Cocktails() {
+export function Meal() {
   const backgroundColor = colors.background.glassPurple;
   const { data, loading, error } = useFetchData(
     "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=p"
@@ -15,15 +16,15 @@ export function Cocktails() {
   return (
     <View style={[styles.container, { backgroundColor: backgroundColor }]}>
       <StylisedTitle
-        text="COCKTAILS OF THE WEEK"
+        text="POPULAR DISH OF THE WEEK"
         color="whiteVariant"
         style={styles.subtile}
       />
       <View style={styles.recipeSection}>
         <RecipeCard
-          img={drinkList[8]?.strDrinkThumb ?? ""}
-          title={drinkList[8]?.strDrink ?? ""}
-          classification={drinkList[8]?.strAlcoholic ?? ""}
+          img={drinkList[9]?.strDrinkThumb ?? ""}
+          title={drinkList[9]?.strDrink ?? ""}
+          classification={drinkList[11]?.strAlcoholic ?? ""}
         />
       </View>
       <StylisedTitle
@@ -32,9 +33,9 @@ export function Cocktails() {
         style={styles.subtile}
       />
       <View style={styles.categoriesSection}>
-        <CategorieCard text="Alcoholic" img="alcoholic" />
-        <CategorieCard text="Glasses" img="glasses" />
-        <CategorieCard text="Coktail's ingredient " img="ingredientCoktail" />
+        <CategorieCard text="type de plat" img="categories" />
+        <CategorieCard text="Countries" img="countries" />
+        <CategorieCard text="ngredients" img="ingredients" />
       </View>
     </View>
   );
