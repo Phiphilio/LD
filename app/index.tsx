@@ -34,8 +34,8 @@ export default function index() {
       />
       <View style={styles.categoriesSection}>
         <CategorieCard text="type de plat" img="categories" />
-        <CategorieCard text="countries" img="countries" />
-        <CategorieCard text="ingredients" img="ingredients" />
+        <CategorieCard text="Countries" img="countries" />
+        <CategorieCard text="Ingredients" img="ingredients" />
       </View>
     </View>
   );
