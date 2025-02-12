@@ -7,11 +7,20 @@ const imageMap: Record<string, any> = {
   categories: require("@/assets/images/categories.jpg"),
   countries: require("@/assets/images/countries.jpg"),
   ingredients: require("@/assets/images/ingredients.jpg"),
+  alcoholic: require("@/assets/images/alcoholic.jpg"),
+  glasses: require("@/assets/images/glasses.jpg"),
+  ingredientCoktail: require("@/assets/images/ingredientCoktail.jpg"),
 };
 
 type props = {
   text: string;
-  img: "categories" | "countries" | "ingredients";
+  img:
+    | "categories"
+    | "countries"
+    | "ingredients"
+    | "alcoholic"
+    | "glasses"
+    | "ingredientCoktail";
 };
 
 export function CategorieCard({ text, img }: props) {
