@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { ThemedText } from "./ThemedText";
 type props = {
   name: string;
-  alcohol: string;
+  info: string;
 };
-export function CardContent({ name, alcohol }: props) {
+export function CardContent({ name, info }: props) {
   const [fontsLoaded] = useFonts({
     PlayFairDisplayItalic: require("@/assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf"),
     PlayFairDisplay: require("@/assets/fonts/PlayfairDisplay-VariableFont_wght.ttf"),
@@ -16,8 +16,8 @@ export function CardContent({ name, alcohol }: props) {
   return (
     <View style={styles.container}>
       <ThemedText variant="title">{name}</ThemedText>
-      <ThemedText variant="description">
-        {alcohol === "Alcoholic" ? "alcoolisée" : "non alcoolisé"}
+      <ThemedText variant="text">
+        {info === "Alcoholic" ? "alcoolisée" : "non alcoolisé"}
       </ThemedText>
       <ThemedText variant="subtitle">Ingrédients</ThemedText>
     </View>
