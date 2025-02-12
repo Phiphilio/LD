@@ -1,62 +1,40 @@
-import { Card } from "@/components/card";
-import { CategorieCard } from "@/components/categorieCard";
-import { RecipeCard } from "@/components/recipeCard";
-import { StylisedTitle } from "@/components/stylisedTitle";
-import { colors } from "@/constants/color";
-import { useFetchData } from "@/hooks/useFecthData";
-import { StyleSheet, Text, View } from "react-native";
+import { CustomTabBar } from "@/components/customTabBar";
+import { SearchBar } from "@/components/searchBar";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import PagerView from "react-native-pager-view";
+import { Cocktails } from "./cocktails";
+import { Favoris } from "./favoris";
+import { Meal } from "./meal";
 
 export default function index() {
-  const backgroundColor = colors.background.glassPurple;
-  const { data, loading, error } = useFetchData(
-    "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=p"
-  );
-
-  const drinkList = data ?? []; // Si `data` est null, on retourne un tableau vide
   return (
-    <View style={[styles.container, { backgroundColor: backgroundColor }]}>
-      <StylisedTitle
-        text="POPULAR DISH OF THE WEEK"
-        color="whiteVariant"
-        style={styles.subtile}
-      />
-      <View style={styles.recipeSection}>
-        <RecipeCard
-          img={drinkList[9]?.strDrinkThumb ?? ""}
-          title={drinkList[9]?.strDrink ?? ""}
-          classification={drinkList[11]?.strAlcoholic ?? ""}
-        />
-      </View>
-      <StylisedTitle
-        text="CATEGORIES"
-        color="whiteVariant"
-        style={styles.subtile}
-      />
-      <View style={styles.categoriesSection}>
-        <CategorieCard text="type de plat" img="categories" />
-        <CategorieCard text="Countries" img="countries" />
-        <CategorieCard text="Ingredients" img="ingredients" />
-      </View>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <SearchBar />
+      <CustomTabBar />
+      <PagerView initialPage={0} style={styles.test}>
+        <View key={1} style={styles.page}>
+          <Meal />
+        </View>
+        <View key={2} style={styles.page}>
+          <Cocktails />
+        </View>
+        <View key={3} style={styles.page}>
+          <Favoris />
+        </View>
+      </PagerView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //  alignItems: "center",
-    padding: 10,
   },
-  subtile: {
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 12,
+  page: {
+    flex: 1,
   },
-  recipeSection: {
-    marginLeft: 12,
-  },
-  categoriesSection: {
-    alignItems: "center",
-    gap: 15,
+  test: {
+    flex: 1,
+    //backgroundColor: "yellow",
   },
 });
