@@ -5,8 +5,9 @@ import { ThemedText } from "./ThemedText";
 
 type props = {
   pageIndex: 0 | 1 | 2;
+  setPage: (index: number) => void;
 };
-export function CustomTabBar({ pageIndex }: props) {
+export function CustomTabBar({ pageIndex, setPage }: props) {
   const router = useRouter();
 
   const purple = colors.background.purple;
@@ -27,7 +28,7 @@ export function CustomTabBar({ pageIndex }: props) {
   return (
     <View style={[styles.container, { backgroundColor: glassPurple }]}>
       {tabs.map((tab, index) => (
-        <Pressable key={index} onPress={() => router.push(tab?.route)}>
+        <Pressable key={index} onPress={() => setPage(tab.index)}>
           <View
             style={
               pageIndex === tab.index ? styles.badgeActif : styles.badgeInactif
