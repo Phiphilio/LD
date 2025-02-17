@@ -5,16 +5,22 @@ import PagerView from "react-native-pager-view";
 import { Cocktails } from "./cocktails";
 import { Favoris } from "./favoris";
 import { Meal } from "./meal";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function index() {
   const [currentPage, setCurrentPage] = useState(0);
+  const pagerRef = useRef<PagerView | null>(null);
+
+  // j'encapsule pagerRef.current?.setPage par mesure de prudence
+  // le fait de mettre : pagerRef.current?.setPage me permet d'exclure le cas ou current est null ou undefined
+  const gotToPage = (index: number) => pagerRef.current?.setPage(index);
 
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar />
-      <CustomTabBar pageIndex={currentPage} />
+      <CustomTabBar pageIndex={currentPage} setPage={gotToPage} />
       <PagerView
+        ref={pagerRef}
         initialPage={0}
         onPageSelected={(event) => {
           setCurrentPage(event.nativeEvent.position);
