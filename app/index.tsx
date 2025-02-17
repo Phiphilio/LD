@@ -5,13 +5,22 @@ import PagerView from "react-native-pager-view";
 import { Cocktails } from "./cocktails";
 import { Favoris } from "./favoris";
 import { Meal } from "./meal";
+import { useState } from "react";
 
 export default function index() {
+  const [currentPage, setCurrentPage] = useState(0);
+
   return (
     <SafeAreaView style={styles.container}>
       <SearchBar />
-      <CustomTabBar />
-      <PagerView initialPage={0} style={styles.test}>
+      <CustomTabBar pageIndex={currentPage} />
+      <PagerView
+        initialPage={0}
+        onPageSelected={(event) => {
+          setCurrentPage(event.nativeEvent.position);
+        }}
+        style={styles.test}
+      >
         <View key={1} style={styles.page}>
           <Meal />
         </View>
