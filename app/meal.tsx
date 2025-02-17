@@ -35,7 +35,7 @@ export function Meal() {
       <View style={styles.categoriesSection}>
         <CategorieCard text="type de plat" img="categories" />
         <CategorieCard text="Countries" img="countries" />
-        <CategorieCard text="ngredients" img="ingredients" />
+        <CategorieCard text="Ingredients" img="ingredients" />
       </View>
     </View>
   );
