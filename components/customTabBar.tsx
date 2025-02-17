@@ -3,28 +3,26 @@ import { useRouter, useSegments } from "expo-router";
 import { View, Pressable, Text, StyleSheet } from "react-native";
 import { ThemedText } from "./ThemedText";
 
-export function CustomTabBar() {
+type props = {
+  pageIndex: 0 | 1 | 2;
+};
+export function CustomTabBar({ pageIndex }: props) {
   const router = useRouter();
-  const segments = useSegments();
 
   const purple = colors.background.purple;
   const glassPurple = colors.background.glassPurple;
 
   const tabs = [
-    { name: <ThemedText variant="stylisedText">meal</ThemedText>, route: "/" }, // ↪ Correspond à `app/index.tsx`
+    { name: <ThemedText variant="stylisedText">meal</ThemedText>, index: 0 },
     {
       name: <ThemedText variant="stylisedText">cocktails</ThemedText>,
-      route: "/cocktails",
-    }, // ↪ Correspond à `app/dinner.tsx`
+      index: 1,
+    },
     {
       name: <ThemedText variant="stylisedText">favoris</ThemedText>,
-      route: "/favoris",
-    }, // ↪ Correspond à `app/cocktails.tsx`
+      index: 2,
+    },
   ];
-
-  const isModalOpen = segments[0] === "stack";
-
-  if (isModalOpen) return null; // Ne rien afficher
 
   return (
     <View style={[styles.container, { backgroundColor: glassPurple }]}>
@@ -32,10 +30,7 @@ export function CustomTabBar() {
         <Pressable key={index} onPress={() => router.push(tab?.route)}>
           <View
             style={
-              (segments.length === 0 && tab.route === "/") ||
-              segments.includes(tab.route.replace("/", ""))
-                ? styles.badgeActif
-                : styles.badgeInactif
+              pageIndex === tab.index ? styles.badgeActif : styles.badgeInactif
             }
           >
             <Text>{tab.name}</Text>
