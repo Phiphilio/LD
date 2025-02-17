@@ -16,7 +16,7 @@ export function Meal() {
   return (
     <View style={[styles.container, { backgroundColor: backgroundColor }]}>
       <StylisedTitle
-        text="POPULAR DISH OF THE WEEK"
+        text="RECIPE OF THE WEEK"
         color="whiteVariant"
         style={styles.subtile}
       />
